@@ -21,7 +21,7 @@ export class ApiService {
   ) { }
 
   apiReq(body: any): Observable<any> {
-    return this.http.post('https://4001.hoteladvisor.net', body)
+    return this.http.post('https://4001.hoteladvisor.net', body);
   }
 
   getHotelConfig(): Observable<HotelConfig> {
@@ -36,7 +36,7 @@ export class ApiService {
         response[0][0].photos = response[1];
         return response[0][0];
       })
-    )
+    );
   }
   getRooms(params: SearchParams): Observable<Rooms> {
     return this.apiReq({
@@ -45,10 +45,9 @@ export class ApiService {
       Parameters: params
     }).pipe(
       map((response: any) => {
-        //response[0][0].photos = response[1];
         return response[0];
       })
-    )
+    );
   }
 
 
