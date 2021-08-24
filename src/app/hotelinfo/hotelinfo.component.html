@@ -2,8 +2,9 @@
   <div fxFlex="70">
     <h1 style="margin: 0px">{{hotelInfo.HOTELNAME}}</h1>
     <div class="hotel-detail-info-stars">
-      <mat-icon>star</mat-icon>
-      <P>{{hotelInfo.STARS}}</P>
+      <ng-container *ngFor="let star of [].constructor(hotelInfo.Stars)">
+        <mat-icon>stars</mat-icon>
+      </ng-container>
     </div>
 
     <div class="hotel-detail-info-addres">{{hotelInfo.ADDRESS}}</div>
@@ -18,32 +19,30 @@
         position: relative;
       "
     >
-      <img
-        src="https://erspublic.blob.core.windows.net/test/16e63eaa-17ae-1906-8552-e2932b0e8000.png"
-        style="width: inherit; height: 100%"
-      /><span class="map-detail-city ng-star-inserted" style="top: 44px">
-        Mugla, Turkey Haritada Göster </span
-      ><!---->
+    <img src="https://erspublic.blob.core.windows.net/test/16e63eaa-17ae-1906-8552-e2932b0e8000.png"
+        style="width: inherit; height: 100%" /><span class="map-detail-city ng-star-inserted" style="top: 44px">
+        Mugla, Turkey Haritada Göster </span>
+
     </div>
   </div>
 
   <div fxFlex="100" class="hotel-contact">
     <div>
-      <a target="_blank" href="mailto:e.cetinkaya@talyabilisim.com.tr"
+      <a target="_blank" href="mailto:{{hotelInfo.EMAIL}}"
         ><mat-icon>email</mat-icon>
         <span>{{hotelInfo.EMAIL}}</span>
       </a>
     </div>
 
     <div>
-      <a href="tel:90 252 642 1140"
+      <a href="tel:{{ hotelInfo.PHONE }}"
         ><mat-icon>phone</mat-icon>
         <span>{{hotelInfo.Phone}}</span>
       </a>
     </div>
 
     <div>
-      <a target="_blank" href="myhotel.com" class="ng-star-inserted"
+      <a target="_blank" href="{{ hotelInfo.Web }}" class="ng-star-inserted"
         ><mat-icon>link</mat-icon>
         <span>{{hotelInfo.Web}}</span>
       </a>
@@ -58,11 +57,11 @@
 
     <div class="item">
       <mat-icon>done_all</mat-icon
-      ><span _ngcontent-xup-c189="" class="ng-star-inserted">Otelde Ödeme</span>
+      ><span _ngcontent-xup-c189="" class="ng-star-inserted">Min Ödeme: {{hotelInfo.DownPaymentPercent}}%</span>
     </div>
   </div>
 
   <div fxFlex="100">    
-      {{hotelInfo.Description}}    
+    <p [innerHTML]="hotelInfo.Description"></p>   
   </div>
 </div>

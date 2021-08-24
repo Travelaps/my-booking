@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { HotelItem } from '../types';
 
 @Component({
   selector: 'app-hotelinfo',
@@ -14,7 +13,8 @@ export class HotelinfoComponent implements OnInit {
   constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.hotelConfig$.subscribe((info) => {this.hotelInfo = info})
+    this.apiService.hotelConfig$.subscribe(hotelInfo=>{
+      this.hotelInfo = hotelInfo})
   }
 
 }

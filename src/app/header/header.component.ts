@@ -1,5 +1,6 @@
 import { BreakpointObserver } from "@angular/cdk/layout";
 import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../api.service";
 
 @Component({
   selector: "app-header",
@@ -9,7 +10,7 @@ import { Component, OnInit } from "@angular/core";
 export class HeaderComponent implements OnInit {
   isMobile: boolean =false;
   xs: boolean = false;
-
+  hotelInfo: any = [];
   langs = [
     { value: "Turkish", viewValue: "TR" },
     { value: "English", viewValue: "EN" },
@@ -23,7 +24,8 @@ export class HeaderComponent implements OnInit {
     { value: "GBP", viewValue: "GBP" },
   ];
 
-  constructor(breakpointObserver: BreakpointObserver) {
+  constructor(breakpointObserver: BreakpointObserver,
+              public apiService: ApiService) {
     breakpointObserver
       .observe(["(max-width: 959px)", "(max-width: 599px)"])
       .subscribe((value) => {
@@ -41,5 +43,7 @@ export class HeaderComponent implements OnInit {
       }
       
     };
+    this.apiService.hotelConfig$.subscribe(hotelInfo=>{
+      this.hotelInfo = hotelInfo})
   }
 }
