@@ -9,12 +9,12 @@ import { HotelItem } from '../types';
 })
 export class HotelinfoComponent implements OnInit {
 
-  hotelInfo: any=[];
+  HotelInfo: any=[];
 
   constructor(public apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.apiService.hotelConfig$.subscribe((info) => {this.hotelInfo = info})
+    this.apiService.hotelConfig$.subscribe((info) => {this.HotelInfo = info})
   }
 
 }
